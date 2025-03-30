@@ -1,6 +1,4 @@
 """
-URL configuration for ecommerce project.
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
 Examples:
@@ -14,12 +12,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
+from users.views import LoginAPIView, LogoutAPIView, RegisterAPIView, ProfileAPIView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/users/',include('users.urls')),
-    path('api/products/',include('products.urls')),
-    path('api/carts/',include('carts.urls')),
+    path('login/', LoginAPIView.as_view(), name='login'),
+    path('logout/', LogoutAPIView.as_view(), name='logout'),
+    path('register/', RegisterAPIView.as_view(), name='register'),
+    path('profile/', ProfileAPIView.as_view(), name='profile'),
 ]
