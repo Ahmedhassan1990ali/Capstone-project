@@ -4,6 +4,7 @@ from products.models import Product
 
 # Create your models here.
 class Cart(models.Model):
+    name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     num_of_products = models.PositiveIntegerField(default=0)
@@ -13,7 +14,7 @@ class Cart(models.Model):
     def update_totals(self):
         self.num_of_items = sum(item.quantity for item in self.cartitems.all())
         self.num_of_products = self.cartitems.count()
-        self.total_price = sum(item.price_at_order *item.quantity for item in self.orderitems.all())
+        self.total_price = sum(item.product.price *item.quantity for item in self.cartitems.all())
         self.save(update_fields=["num_of_products","num_of_items","total_price"])
     def __str__(self):
         return f"Cart-{self.user.username}-{self.created_at.date()}"
@@ -27,8 +28,9 @@ class CartItem(models.Model):
         self.cart.update_totals()
         return result
     def delete(self,  *args, **kwargs):
+        cart = self.cart
         result = super().delete( *args, **kwargs)
-        self.cart.update_totals()
+        cart.update_totals()
         return result
      
 

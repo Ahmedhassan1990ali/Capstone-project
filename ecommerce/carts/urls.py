@@ -12,9 +12,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import include, path
+from rest_framework import routers
+from carts.views import ( UserCartsModelViewSet, UserCartItemsModelViewSet,
+                         AdminCartsModelViewSet, AdminCartItemsModelViewSet
+)
+
+router = routers.DefaultRouter()
+router.register(r'user/carts',UserCartsModelViewSet,basename="usercarts")
+router.register(r'user/cartitems',UserCartItemsModelViewSet,basename="usercartitems")
+router.register(r'admin/carts',AdminCartsModelViewSet,basename="admincarts")
+router.register(r'admin/cartitems',AdminCartItemsModelViewSet,basename="admincartitems")
+
 
 urlpatterns = [
-
+    path('',include(router.urls))
 ]
