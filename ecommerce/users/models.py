@@ -4,18 +4,20 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 # Create your models here.
 class CustomUserManager(BaseUserManager):
-    def create_user(self,username,email,password=None,**kwargs):
+    def create_user(self,username,email,password,**kwargs):
         if not username:
             raise ValueError("Name must be set")
         if not email:
             raise ValueError("email must be provided")
+        if not password:
+            raise ValueError("Password must be provided")
         email = self.normalize_email(email)
         user = self.model(username=username,email=email,**kwargs)
         user.set_password(password)
         user.save()
         return user    
     
-    def create_superuser(self,username,email,password=None,**kwargs):
+    def create_superuser(self,username,email,password,**kwargs):
         kwargs.setdefault("is_staff",True)
         kwargs.setdefault("is_superuser",True)
         if kwargs.get("is_staff")is not True:
@@ -27,8 +29,8 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=20,blank=True)
-    last_name = models.CharField(max_length=20,blank=True)
+    first_name = models.CharField(max_length=20, blank=True, null=True)
+    last_name = models.CharField(max_length=20, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
