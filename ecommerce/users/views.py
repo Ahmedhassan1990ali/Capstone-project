@@ -11,6 +11,7 @@ from users.serializers import RegistrationSerializer, ProfileSerializer
 # Create your views here.
 
 class RegisterAPIView(APIView):
+    permission_classes = [AllowAny]
     def post(self, request):
         serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid():
