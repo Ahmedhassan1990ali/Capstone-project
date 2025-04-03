@@ -86,7 +86,7 @@ This is a RESTful API for an eCommerce platform built with Django Rest Framework
 | POST   | `/api/users/register/` | Register a new user and obtain authentication token |
 | POST   | `/api/users/login/`    | Login and obtain authentication token               |
 | GET    | `/api/users/profile/`  | Retrieve user profile                               |
-| PATCH  | `/api/users/profile/`  | Update user profile                                |
+| PATCH  | `/api/users/profile/`  | Update user profile                                 |
 | POST   | `/api/users/logout/`   | Logout and delete authentication token              |
 
 ### **Products**  
@@ -97,13 +97,14 @@ This is a RESTful API for an eCommerce platform built with Django Rest Framework
 | GET    | `/api/products/products/<id>/`    | Retrieve a product                       |
 | PUT    | `/api/products/products/<id>/`    | Update a product (Admins only)           |
 | PATCH  | `/api/products/products/<id>/`    | Partialy update a product (Admins only)  |
-| DELETE | `/api/products/products/<id>/`    | Delete a product (Admins only)          |
+| DELETE | `/api/products/products/<id>/`    | Delete a product (Admins only)           |
+|        |                                   |                                          |
 | GET    | `/api/products/categories/`       | List all categories                      |
 | POST   | `/api/products/categories/`       | Add new category (Admins only)           |
 | GET    | `/api/products/categories/<id>/`  | Retrieve a category                      |
 | PUT    | `/api/products/categories/<id>/`  | Update a category (Admins only)          |
 | PATCH  | `/api/products/categories/<id>/`  | Partialy update a category (Admins only) |
-| DELETE | `/api/products/categories/<id>/`  | Delete a category (Admins only)         |
+| DELETE | `/api/products/categories/<id>/`  | Delete a category (Admins only)          |
 
 ### **Carts**  
 | Method | Endpoint                          | Description                                      |
@@ -114,12 +115,14 @@ This is a RESTful API for an eCommerce platform built with Django Rest Framework
 | PUT    | `/api/carts/user/carts/<id>/`     | Update a specific cart for the user              |
 | PATCH  | `/api/carts/user/carts/<id>/`     | Partialy update a specific cart for the user     |
 | DELETE | `/api/carts/user/carts/<id>/`     | Delete a specific cart for the user              |
+|        |                                   |                                                  |
 | GET    | `/api/carts/user/cartitems/`      | View cart items of the user                      |
 | POST   | `/api/carts/user/cartitems/`      | Add new cart item of the user                    |
 | GET    | `/api/carts/user/cartitems/<id>/` | Retrieve a specific cart item for the user       |
 | PUT    | `/api/carts/user/cartitems/<id>/` | Update a specific cart item for the user         |
 | PATCH  | `/api/carts/user/cartitems/<id>/` | Partialy update a specific cart item for the user|
 | DELETE | `/api/carts/user/cartitems/<id>/` | Delete a specific cart item for the user         |
+|        |                                   |                                                  |
 | GET    | `/api/carts/admin/carts/`         | View all carts (admin)                           |
 | GET    | `/api/carts/admin/carts/<id>/`    | Retrieve a specific cart (admin)                 |
 | GET    | `/api/carts/admin/cartitems/`     | View all cart items (admin)                      |
