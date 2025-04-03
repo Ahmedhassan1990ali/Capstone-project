@@ -70,7 +70,7 @@ This is a RESTful API for an eCommerce platform built with Django Rest Framework
 ## 🔐 Authentication & Security  
 
 - The API uses **TokenAuthentication** for user authentication.  
-- Obtain a token by sending a POST request to `/api/users/register/`  
+- Obtain a token by sending a POST request to `/api/users/register/` or `/api/users/login/`
 - Include the token in the `Authorization` header for protected endpoints:  
   ```
   Authorization: Token your_token_here
